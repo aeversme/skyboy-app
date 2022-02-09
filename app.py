@@ -6,7 +6,10 @@ from plotly.subplots import make_subplots
 st.set_page_config(page_title='Skyboy Quad Telemetry App', layout='wide')
 
 st.title('Skyboy')
+st.markdown('_A quadcopter telemetry log visualization app_')
 st.sidebar.title('Skyboy Utilities')
+# TODO: create a section for flight statistics
+# TODO: create a module to extract/calculate flight statistics & import
 
 
 # load, transform, and cache CSV data
@@ -26,15 +29,18 @@ data_load_state = st.sidebar.text('Loading data...')
 flight_data = load_data()
 data_load_state.text('Loading data and caching... done!')
 
-# render raw data as a table
 show_data = st.sidebar.checkbox('Show raw flight data')
 if show_data:
+    # render raw data as a table
     st.subheader('Raw flight data')
     st.dataframe(flight_data)
 
 st.sidebar.write('Charts:')
+# TODO: add more charts (Batt/Pwr, Rx/Tx)
 show_flight_dynamics = st.sidebar.checkbox('Flight dynamics')
 if show_flight_dynamics:
+    # render Flight Dynamics chart
+    # TODO: break charts out into a separate module & import
     flight_dynamics = make_subplots(specs=[[{'secondary_y': True}]])
     flight_dynamics.add_trace(go.Scatter(x=flight_data['Date'], y=flight_data['Alt(m)'], name='Alt (m)', hoverinfo='y'),
                               secondary_y=False)
