@@ -9,7 +9,7 @@ _Development update Feb 9, 2022:_
 * Added more charts
 * Added flight metrics
 
-![Development screenshot](src/assets/images/skyboyapp-feb092022.jpg)
+![Development screenshot](src/images/skyboyapp-feb092022.jpg)
 
 _Development update Feb 8, 2022:_
 
@@ -17,4 +17,4 @@ _Development update Feb 8, 2022:_
 * Added checkboxes to toggle content
 * Added Flight Dynamics chart using plotly
 
-![Development screenshot](src/assets/images/skyboyapp-feb082022.jpg)
+![Development screenshot](src/images/skyboyapp-feb082022.jpg)

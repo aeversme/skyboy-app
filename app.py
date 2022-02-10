@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-import charts as ch
+from src.modules import charts as ch
+from src.modules import metrics as mt
 
 
 @st.cache
@@ -28,11 +29,11 @@ data_load_state.text('Loading data and caching... done!')
 
 col1, col2, col3, col4, col5 = st.columns(5)
 
-col1.metric('Date', 'Jan 24, 2022')
-col2.metric('Time', '12:02:40 PM')
-col3.metric('Flight Length', '12 min')
-col4.metric('Capacity Used', '851 mAh')
-col5.metric('Transmitter Power', '250 mW')
+col1.metric('Date', mt.get_date(flight_data['Date']))
+col2.metric('Time', mt.get_time(flight_data['Date']))
+col3.metric('Flight Length', mt.get_flight_length(flight_data['Date']))
+col4.metric('Capacity Used', mt.get_capacity_used(flight_data['Capa(mAh)']))
+col5.metric('Transmitter Power', mt.get_tx_power(flight_data['TPWR(mW)']))
 
 col1.metric('Max Distance from Home', '342 m')
 col2.metric('Max Altitude', '55 m')
