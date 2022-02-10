@@ -4,7 +4,7 @@ WIP
 
 An application for visualizing FPV quadcopter telemetry data logged by OpenTx/EdgeTx.
 
-_Development update Feb 8, 2022:_
+_Development update Feb 9, 2022:_
 
 * Added more charts
 * Added flight metrics
