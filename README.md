@@ -6,6 +6,13 @@ An application for visualizing FPV quadcopter telemetry data logged by OpenTx/Ed
 
 _Development update Feb 8, 2022:_
 
+* Added more charts
+* Added flight metrics
+
+![Development screenshot](src/assets/images/skyboyapp-feb092022.jpg)
+
+_Development update Feb 8, 2022:_
+
 * Added sidebar
 * Added checkboxes to toggle content
 * Added Flight Dynamics chart using plotly
