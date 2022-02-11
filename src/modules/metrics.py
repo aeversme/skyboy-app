@@ -1,6 +1,24 @@
-import pandas as pd
-import datetime as dt
-import time
+from haversine import haversine, Unit
+
+
+def calc_max_distance(column):
+    max_distance = 0
+    home = (float(column[0][0]), float(column[0][1]))
+    for i in range(1, len(column) - 1):
+        location = (float(column[i][0]), float(column[i][1]))
+        distance = haversine(home, location, unit=Unit.METERS)
+        if distance > max_distance:
+            max_distance = distance
+    return str(round(max_distance, 1)) + ' m'
+
+
+def calc_flight_distance(column):
+    distance = 0
+    for i in range(len(column) - 2):
+        loc1 = (float(column[i][0]), float(column[i][1]))
+        loc2 = (float(column[i + 1][0]), float(column[i + 1][1]))
+        distance += haversine(loc1, loc2, unit=Unit.METERS)
+    return str(round(distance, 1)) + ' m'
 
 
 def get_date(column):
@@ -23,3 +41,15 @@ def get_capacity_used(column):
 
 def get_tx_power(column):
     return str(column[0]) + ' mW'
+
+
+def get_max_altitude(column):
+    return str(column.max()) + ' m'
+
+
+def get_max_ground_speed(column):
+    return str(column.max()) + ' m/s'
+
+
+def get_max_current(column):
+    return str(column.max()) + ' A'
