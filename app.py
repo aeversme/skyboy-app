@@ -11,6 +11,8 @@ def load_data():
     converted_data = dc.convert_df(data)
     return converted_data
 
+# TODO: remove unused columns from dataframe?
+
 
 st.set_page_config(page_title='Skyboy Quad Telemetry App', layout='wide')
 
@@ -23,23 +25,28 @@ data_load_state = st.sidebar.text('Loading data...')
 flight_data = load_data()
 data_load_state.text('Loading data and caching... done!')
 
+if st.sidebar.checkbox('Show raw flight data'):
+    st.subheader('Raw flight data')
+    st.dataframe(flight_data)
+
+# TODO: finish imperial conversions
+user_unit = 'metric'
+if st.sidebar.checkbox('Use Imperial units'):
+    user_unit = 'imperial'
+
 col1, col2, col3, col4, col5 = st.columns(5)
 
 col1.metric('Date', mt.get_date(flight_data['Date']))
 col2.metric('Time', mt.get_time(flight_data['Date']))
 col3.metric('Flight Length', mt.get_flight_length(flight_data['Date']))
-col4.metric('Flight Distance', mt.calc_flight_distance(flight_data['GPS']))
-col5.metric('Max Distance from Home', mt.calc_max_distance(flight_data['GPS']))
+col4.metric('Flight Distance', mt.calc_flight_distance(flight_data['GPS'], user_unit))
+col5.metric('Max Distance from Home', mt.calc_max_distance(flight_data['GPS'], user_unit))
 
-col1.metric('Max Altitude', mt.get_max_altitude(flight_data['Alt(m)']))
+col1.metric('Max Altitude', mt.get_max_altitude(flight_data['Alt(m)'], user_unit))
 col2.metric('Max Ground Speed', mt.get_max_ground_speed(flight_data['GSpd(m/s)']))
 col3.metric('Max Current Draw', mt.get_max_current(flight_data['Curr(A)']))
 col4.metric('Capacity Used', mt.get_capacity_used(flight_data['Capa(mAh)']))
 col5.metric('Transmitter Power', mt.get_tx_power(flight_data['TPWR(mW)']))
-
-if st.sidebar.checkbox('Show raw flight data'):
-    st.subheader('Raw flight data')
-    st.dataframe(flight_data)
 
 chartcol1, chartcol2 = st.columns(2)
 
