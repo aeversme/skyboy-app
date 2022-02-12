@@ -2,14 +2,37 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-def create_flight_dynamics_chart(data):
+def create_flight_dynamics_chart(data, unit):
+    metric = {
+        'alt_data': data['Alt(m)'],
+        'alt_name': 'Alt (m)',
+        'gs_data': data['GSpd(m/s)'],
+        'gs_name': 'Ground Spd (m/s)',
+        'vs_data': data['VSpd(m/s)'],
+        'vs_name': 'Vert Spd (m/s)',
+        'yaxis1_title': 'Altitude (m)',
+        'yaxis2_title': 'Speed (m/s)'
+    }
+    imperial = {
+        'alt_data': data['Alt(ft)'],
+        'alt_name': 'Alt (ft)',
+        'gs_data': data['GSpd(mph)'],
+        'gs_name': 'Ground Spd (mph)',
+        'vs_data': data['VSpd(mph)'],
+        'vs_name': 'Vert Spd (mph)',
+        'yaxis1_title': 'Altitude (ft)',
+        'yaxis2_title': 'Speed (mph)'
+    }
+    unit_dict = metric
+    if unit == 'imperial':
+        unit_dict = imperial
+
     flight_dynamics = make_subplots(specs=[[{'secondary_y': True}]])
-    flight_dynamics.add_trace(go.Scatter(x=data['Date'], y=data['Alt(m)'], name='Alt (m)', hoverinfo='y'),
-                              secondary_y=False)
-    flight_dynamics.add_trace(go.Scatter(x=data['Date'], y=data['GSpd(m/s)'], name='Ground Spd (m/s)',
-                                         hoverinfo='y'),
-                              secondary_y=True)
-    flight_dynamics.add_trace(go.Scatter(x=data['Date'], y=data['VSpd(m/s)'], name='Vert Spd (m/s)',
+    flight_dynamics.add_trace(go.Scatter(x=data['Date'], y=unit_dict['alt_data'], name=unit_dict['alt_name'],
+                                         hoverinfo='y'), secondary_y=False)
+    flight_dynamics.add_trace(go.Scatter(x=data['Date'], y=unit_dict['gs_data'], name=unit_dict['gs_name'],
+                                         hoverinfo='y'), secondary_y=True)
+    flight_dynamics.add_trace(go.Scatter(x=data['Date'], y=unit_dict['vs_data'], name=unit_dict['vs_name'],
                                          hoverinfo='y'), secondary_y=True)
     flight_dynamics.update_layout(title_text='Flight Dynamics',
                                   legend=dict(
@@ -20,8 +43,8 @@ def create_flight_dynamics_chart(data):
                                       x=1
                                   ))
     flight_dynamics.update_xaxes(title_text='Flight Time')
-    flight_dynamics.update_yaxes(title_text='Altitude (m)', secondary_y=False)
-    flight_dynamics.update_yaxes(title_text='Speed (m/s)', secondary_y=True)
+    flight_dynamics.update_yaxes(title_text=unit_dict['yaxis1_title'], secondary_y=False)
+    flight_dynamics.update_yaxes(title_text=unit_dict['yaxis2_title'], secondary_y=True)
     return flight_dynamics
 
 
