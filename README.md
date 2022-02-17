@@ -4,13 +4,17 @@ WIP
 
 An application for visualizing FPV quadcopter telemetry data logged by OpenTx/EdgeTx.
 
+_Development update Feb 16, 2022:_
+
+* Started to add map functionality
+
+![Development screenshot](src/images/skyboyapp-feb162022.jpg)
+
 _Development update Feb 10, 2022:_
 
 * Refactored directory structure
 * Added module for transforming data
 * Added module for extracting/calculating metrics from dataset
-
-![Development screenshot](src/images/skyboyapp-feb102022.jpg)
 
 _Development update Feb 9, 2022:_
 
