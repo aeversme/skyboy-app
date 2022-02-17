@@ -3,3 +3,4 @@ venv/
 .idea/
 test.py
 __pycache__/
+token.txt

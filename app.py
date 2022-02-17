@@ -3,6 +3,7 @@ import pandas as pd
 from src.modules import data_conversion as dc
 from src.modules import charts as ch
 from src.modules import metrics as mt
+from src.modules import maps as mp
 
 
 @st.cache
@@ -10,8 +11,6 @@ def load_data():
     data = pd.read_csv('TransformerMini-2022-01-24-114643.csv')
     converted_data = dc.convert_df(data)
     return converted_data
-
-# TODO: remove unused columns from dataframe?
 
 
 st.set_page_config(page_title='Skyboy Quad Telemetry App', layout='wide')
@@ -50,6 +49,9 @@ col2.metric('Max Ground Speed', mt.get_max_ground_speed(flight_data[spd_label], 
 col3.metric('Max Current Draw', mt.get_max_current(flight_data['Curr(A)']))
 col4.metric('Capacity Used', mt.get_capacity_used(flight_data['Capa(mAh)']))
 col5.metric('Transmitter Power', mt.get_tx_power(flight_data['TPWR(mW)']))
+
+flight_map = mp.create_flight_map(flight_data)
+st.pydeck_chart(flight_map)
 
 chartcol1, chartcol2 = st.columns(2)
 
