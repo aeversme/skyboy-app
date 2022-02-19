@@ -1,12 +1,12 @@
 from haversine import haversine, Unit
 
 
-def calc_max_distance(column, unit):
+def calc_max_distance(lat, lon, unit):
     max_distance = 0
     unit_string = ' m'
-    home = (float(column[0][0]), float(column[0][1]))
-    for i in range(1, len(column) - 1):
-        location = (float(column[i][0]), float(column[i][1]))
+    home = (lat[0], lon[0])
+    for i in range(1, len(lat) - 1):
+        location = (lat[i], lon[i])
         distance = haversine(home, location, unit=Unit.METERS)
         if distance > max_distance:
             max_distance = distance
@@ -21,12 +21,12 @@ def calc_max_distance(column, unit):
     return str(round(max_distance, decimal_places)) + unit_string
 
 
-def calc_flight_distance(column, unit):
+def calc_flight_distance(lat, lon, unit):
     distance = 0
     unit_string = ' m'
-    for i in range(len(column) - 2):
-        loc1 = (float(column[i][0]), float(column[i][1]))
-        loc2 = (float(column[i + 1][0]), float(column[i + 1][1]))
+    for i in range(len(lat) - 2):
+        loc1 = (lat[i], lon[i])
+        loc2 = (lat[i + 1], lon[i + 1])
         distance += haversine(loc1, loc2, unit=Unit.METERS)
     decimal_places = 1
     if unit == 'imperial':

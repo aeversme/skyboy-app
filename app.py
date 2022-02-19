@@ -36,13 +36,14 @@ if st.sidebar.checkbox('Use Imperial units'):
     alt_label = 'Alt(ft)'
     spd_label = 'GSpd(mph)'
 
+st.subheader('Flight Metrics')
 col1, col2, col3, col4, col5 = st.columns(5)
 
 col1.metric('Date', mt.get_date(flight_data['Date']))
 col2.metric('Time', mt.get_time(flight_data['Date']))
 col3.metric('Flight Length', mt.get_flight_length(flight_data['Date']))
-col4.metric('Flight Distance', mt.calc_flight_distance(flight_data['GPS'], user_unit))
-col5.metric('Max Distance from Home', mt.calc_max_distance(flight_data['GPS'], user_unit))
+col4.metric('Flight Distance', mt.calc_flight_distance(flight_data['lat'], flight_data['lon'], user_unit))
+col5.metric('Max Distance from Home', mt.calc_max_distance(flight_data['lat'], flight_data['lon'], user_unit))
 
 col1.metric('Max Altitude', mt.get_max_altitude(flight_data[alt_label], user_unit))
 col2.metric('Max Ground Speed', mt.get_max_ground_speed(flight_data[spd_label], user_unit))
@@ -50,9 +51,13 @@ col3.metric('Max Current Draw', mt.get_max_current(flight_data['Curr(A)']))
 col4.metric('Capacity Used', mt.get_capacity_used(flight_data['Capa(mAh)']))
 col5.metric('Transmitter Power', mt.get_tx_power(flight_data['TPWR(mW)']))
 
+st.subheader('Flight Map')
+st.markdown('_Drag to pan. Hold shift and drag to rotate. Scroll to zoom._')
 flight_map = mp.create_flight_map(flight_data)
 st.pydeck_chart(flight_map)
 
+
+st.subheader('Flight Charts')
 chartcol1, chartcol2 = st.columns(2)
 
 st.sidebar.markdown('_Charts:_')
