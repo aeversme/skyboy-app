@@ -1,7 +1,8 @@
 import pydeck as pdk
 import os
 
-MAPBOX_API_KEY = os.getenv('MAPBOX_API_KEY')
+# The Mapbox API key is read from the .streamlit/config.toml file.
+# MAPBOX_API_KEY = os.getenv('MAPBOX_API_KEY')
 
 
 def aggregate_path(column):
@@ -32,6 +33,6 @@ def create_flight_map(data):
     flight_map = pdk.Deck(map_provider='mapbox',
                           layers=layers,
                           map_style=pdk.map_styles.SATELLITE,
-                          api_keys={'mapbox': MAPBOX_API_KEY},
+                          # api_keys={'mapbox': MAPBOX_API_KEY},
                           initial_view_state=view_state)
     return flight_map
