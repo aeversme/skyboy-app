@@ -1,14 +1,17 @@
 # Skyboy App
 
-WIP
-
 An application for visualizing FPV quadcopter telemetry data logged by OpenTx/EdgeTx.
+
+_Development update Feb 21, 2022:_
+
+* Added uploader utility
+* Added content to initial application view (prior to uploading data)
+
+![Development screenshot](src/images/skyboyapp-feb212022.jpg)
 
 _Development update Feb 18, 2022:_
 
 * Added basic flight path layer to map
-
-![Development screenshot](src/images/skyboyapp-feb182022.jpg)
 
 _Development update Feb 16, 2022:_
 
