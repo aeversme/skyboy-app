@@ -7,7 +7,7 @@ _Development update Feb 21, 2022:_
 * Added uploader utility
 * Added content to initial application view (prior to uploading data)
 
-![Development screenshot](src/images/skyboyapp-feb212022.jpg)
+![Development screenshot](app/src/images/skyboyapp-feb212022.jpg)
 
 _Development update Feb 18, 2022:_
 

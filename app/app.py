@@ -15,7 +15,6 @@ def load_data(file):
 
 
 def display_flight(data, unit, alt, spd):
-    st.markdown('***')
     st.subheader('Flight Metrics')
     col1, col2, col3, col4, col5 = st.columns(5)
 
@@ -65,8 +64,6 @@ initial_markdown = """
 * and charts for analyzing related data.
 
 Choose from metric or Imperial units.
-
-Upload a telemetry log in the sidebar to get started!
 """
 
 metrics_image = Image.open('src/images/metrics.jpg')
@@ -83,6 +80,7 @@ uploaded_file = st.sidebar.file_uploader('Upload a telemetry log:', type=['csv']
 if not uploaded_file:
     col1, col2 = st.columns(2)
     col1.write(initial_markdown)
+    col1.subheader("Upload a telemetry log in the sidebar to get started!")
     col2.image(metrics_image)
     col2.image(map_image)
     col2.image(chart_image)

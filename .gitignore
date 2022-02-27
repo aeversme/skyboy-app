@@ -3,5 +3,4 @@ venv/
 .idea/
 test.py
 __pycache__/
-token.txt
-.streamlit/
+app/.streamlit/
