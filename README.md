@@ -2,6 +2,10 @@
 
 An application for visualizing FPV quadcopter telemetry data logged by OpenTx/EdgeTx.
 
+_Development update Feb 27, 2022:_
+
+* Created Dockerfile and built application Docker image
+
 _Development update Feb 21, 2022:_
 
 * Added uploader utility
