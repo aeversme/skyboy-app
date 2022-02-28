@@ -37,19 +37,35 @@ def display_flight(data, unit, alt, spd):
 
     st.subheader('Flight Charts')
     chartcol1, chartcol2 = st.columns(2)
+    chartcol1_count = 0
+    chartcol2_count = 0
 
     st.sidebar.markdown('_Charts:_')
     if st.sidebar.checkbox('Flight dynamics', value=True):
         chartcol1.plotly_chart(ch.create_flight_dynamics_chart(data, unit))
+        chartcol1_count += 1
 
     if st.sidebar.checkbox('Battery stats', value=True):
-        chartcol1.plotly_chart(ch.create_battery_chart(data))
+        if chartcol1_count > 0:
+            chartcol2.plotly_chart(ch.create_battery_chart(data))
+            chartcol2_count += 1
+        else:
+            chartcol1.plotly_chart(ch.create_battery_chart(data))
+            chartcol1_count += 1
 
     if st.sidebar.checkbox('Link quality', value=True):
-        chartcol2.plotly_chart(ch.create_lq_chart(data))
+        if chartcol1_count == 1 and chartcol2_count == 0:
+            chartcol2.plotly_chart(ch.create_lq_chart(data))
+            chartcol2_count += 1
+        else:
+            chartcol1.plotly_chart(ch.create_lq_chart(data))
+            chartcol1_count += 1
 
     if st.sidebar.checkbox('Signal stats', value=True):
-        chartcol2.plotly_chart(ch.create_signal_chart(data))
+        if (chartcol1_count == 1 and chartcol2_count == 0) or (chartcol1_count == 2 and chartcol2_count == 1):
+            chartcol2.plotly_chart(ch.create_signal_chart(data))
+        else:
+            chartcol1.plotly_chart(ch.create_signal_chart(data))
 
 
 subtitle_markdown = """
