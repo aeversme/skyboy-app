@@ -2,6 +2,17 @@
 
 An application for visualizing FPV quadcopter telemetry data logged by OpenTx/EdgeTx.
 
+**Roadmap**
+
+* :dart: Deploy proof-of-concept with load-balancing and a domain
+* :dart: Choose and implement Infrastructure as Code solution
+* :dart: Add authentication and personal S3 buckets or directories
+* :dart: Add S3 upload functionality
+* :dart: Add S3 read/retrieve functionality
+* :dart: more interesting/better 3D map?
+* :dart: Sanity checks/error handling
+* :dart: Modify transformations for logs from other receiver/radio combinations
+
 _Development update Feb 27, 2022:_
 
 * Created Dockerfile and built application Docker image
