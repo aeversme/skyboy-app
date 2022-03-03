@@ -75,7 +75,7 @@ _A quadcopter telemetry log visualization app_
 
 initial_markdown = """
 **Skyboy will display:**
-* metrics from your flight;
+* metrics from your flight: distance, time, max altitude, and more;
 * an interactive map with a trace of your flight's GPS path;
 * and charts for analyzing related data.
 
@@ -100,6 +100,8 @@ if not uploaded_file:
     col2.image(metrics_image)
     col2.image(map_image)
     col2.image(chart_image)
+    st.sidebar.caption("NB: Uploaded files are stored in memory and will not persist after the app is closed. Each "
+                       "instance of the app is independent of every other instance.")
 if uploaded_file is not None:
     st.sidebar.markdown('_Data processing status:_')
     data_load_state = st.sidebar.text('Loading data...')
