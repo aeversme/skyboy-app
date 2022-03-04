@@ -4,7 +4,7 @@ An application for visualizing FPV quadcopter telemetry data logged by OpenTx/Ed
 
 **Roadmap**
 
-* :dart: Deploy proof-of-concept with load-balancing and a domain
+* :heavy_check_mark: [Deploy](https://skyboy.app) proof-of-concept with load-balancing and a domain
 * :dart: Choose and implement Infrastructure as Code solution
 * :dart: Add authentication and personal S3 buckets or directories
 * :dart: Add S3 upload functionality
