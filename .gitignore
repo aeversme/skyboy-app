@@ -3,4 +3,4 @@ venv/
 .idea/
 test.py
 __pycache__/
-app/.streamlit/
+app/.streamlit/config.toml
