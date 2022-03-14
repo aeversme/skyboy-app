@@ -43,8 +43,11 @@ jobs:
           role-session-name: ProdSession
 
       - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+        uses: docker/login-action@v1
+        with:
+          registry: public.ecr.aws
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
 
       - name: Cache Docker layers
         uses: actions/cache@v2
@@ -60,9 +63,17 @@ jobs:
           context: ./app
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ steps.login-ecr.outputs.registry }}/skyboy:latest
+          tags: ${{ secrets.DEV_ECR_REGISTRY }}/skyboy:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
+
+#      - name: Build, tag, and push Docker image
+#        env:
+#          REGISTRY: ${{ secrets.DEV_ECR_REGISTRY }}
+#        run: |
+#          docker buildx build -t skyboy --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new ./app
+#          docker tag skyboy:latest $REGISTRY/skyboy:latest
+#          docker push $REGISTRY/skyboy:latest
 
       - name: Move cache
         run: |
