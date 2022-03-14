@@ -31,7 +31,7 @@ jobs:
         if: github.ref == 'refs/heads/dev'
         with:
           role-to-assume: ${{ secrets.DEV_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
+#          aws-region: ${{ secrets.AWS_REGION }}
           role-session-name: DevSession
 
 #      - name: Configure prod AWS credentials
