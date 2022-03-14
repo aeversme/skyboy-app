@@ -13,6 +13,10 @@ An application for visualizing FPV quadcopter telemetry data logged by OpenTx/Ed
 * :dart: Sanity checks/error handling
 * :dart: Modify transformations for logs from other receiver/radio combinations
 
+_Development update Mar 13, 2022:_
+
+* GitHub Action for automatically building and pushing images created and tested
+
 _Development update Mar 3, 2022:_
 
 * Proof-of-concept deployed with custom domain name (skyboy.app) on AWS
