@@ -26,14 +26,14 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@master
 
-#      - name: Configure dev AWS credentials
-#        uses: aws-actions/configure-aws-credentials@v1
-#        if: github.ref == 'refs/heads/dev'
-#        with:
-#          role-to-assume: ${{ secrets.DEV_ROLE_ARN }}
-#          aws-region: ${{ secrets.AWS_REGION }}
-#          role-session-name: DevSession
-#
+      - name: Configure dev AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        if: github.ref == 'refs/heads/dev'
+        with:
+          role-to-assume: ${{ secrets.DEV_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-session-name: DevSession
+
 #      - name: Configure prod AWS credentials
 #        uses: aws-actions/configure-aws-credentials@v1
 #        if: github.ref == 'refs/heads/main'
@@ -46,8 +46,8 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: public.ecr.aws
-          username: ${{ secrets.DEV_ACCESS_KEY_ID }}
-          password: ${{ secrets.DEV_SECRET_ACCESS_KEY }}
+#          username: ${{ secrets.DEV_ACCESS_KEY_ID }}
+#          password: ${{ secrets.DEV_SECRET_ACCESS_KEY }}
 #        env:
 #          AWS_REGION: us-east-2
 
