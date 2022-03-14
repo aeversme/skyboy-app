@@ -48,8 +48,8 @@ jobs:
           registry: public.ecr.aws
           username: ${{ secrets.DEV_ACCESS_KEY_ID }}
           password: ${{ secrets.DEV_SECRET_ACCESS_KEY }}
-        env:
-          AWS_REGION: us-east-2
+#        env:
+#          AWS_REGION: us-east-2
 
       - name: Cache Docker layers
         uses: actions/cache@v2
