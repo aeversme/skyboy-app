@@ -1,0 +1,16 @@
+name: Call build_push_image from main branch
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'app/**'
+
+jobs:
+  build-app:
+    uses: ./github/workflows/build-push-image.yml
+    secrets:
+      access_key_id: ${{ secrets.PROD_ACCESS_KEY_ID }}
+      secret_access_key: ${{ secrets.PROD_SECRET_ACCESS_KEY }}
+      ecr_registry: ${{ secrets.PROD_ECR_REGISTRY }}
