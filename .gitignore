@@ -4,3 +4,7 @@ venv/
 test.py
 __pycache__/
 app/.streamlit/config.toml
+terraform/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
