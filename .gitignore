@@ -1,5 +1,6 @@
 venv/
 *.csv
+.credentials/
 .idea/
 test.py
 __pycache__/

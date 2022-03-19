@@ -7,13 +7,17 @@ _An application for visualizing FPV quadcopter telemetry data logged by OpenTx/E
 **Roadmap**
 
 * :heavy_check_mark: [Deploy](https://skyboy.app) proof-of-concept with load-balancing and a domain
-* :dart: Choose and implement Infrastructure as Code solution
+* :dart: Configure and implement Terraform for AWS infrastructure
 * :dart: Add authentication and personal S3 buckets or directories
 * :dart: Add S3 upload functionality
 * :dart: Add S3 read/retrieve functionality
 * :dart: more interesting/better 3D map?
 * :dart: Sanity checks/error handling
 * :dart: Modify transformations for logs from other receiver/radio combinations
+
+_Development update Mar 18, 2022:_
+* Started building Terraform
+* VPC resources configured
 
 _Development update Mar 13-14, 2022:_
 * Refactored Action to be reusable, which can be triggered from multiple branches
