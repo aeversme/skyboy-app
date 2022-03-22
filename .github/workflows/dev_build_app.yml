@@ -1,0 +1,16 @@
+name: Call build_push_image from dev branch
+
+on:
+  push:
+    branches:
+      - 'dev'
+    paths:
+      - 'app/**'
+
+jobs:
+  build-app:
+    uses: ./.github/workflows/build-push-image.yml
+    secrets:
+      access_key_id: ${{ secrets.DEV_ACCESS_KEY_ID }}
+      secret_access_key: ${{ secrets.DEV_SECRET_ACCESS_KEY }}
+      ecr_registry: ${{ secrets.DEV_ECR_REGISTRY }}

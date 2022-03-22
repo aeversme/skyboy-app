@@ -1,0 +1,8 @@
+[mapbox]
+
+token = "TOKEN_PLACEHOLDER"
+
+[server]
+
+port = 8501
+headless = true
