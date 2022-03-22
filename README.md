@@ -15,32 +15,24 @@ _An application for visualizing FPV quadcopter telemetry data logged by OpenTx/E
 * :dart: Sanity checks/error handling
 * :dart: Modify transformations for logs from other receiver/radio combinations
 
-_Development update Mar 18, 2022:_
-* Started building Terraform
+_Development update Mar 18-21, 2022:_
 * VPC resources configured
+* Created modular Terraform code for defining infrastructure
 
 _Development update Mar 13-14, 2022:_
 * Refactored Action to be reusable, which can be triggered from multiple branches
-* Created and testedGitHub Action for automatically building and pushing images 
+* Created and tested GitHub Action for automatically building and pushing images 
 
 _Development update Mar 3, 2022:_
 * Deployed Proof-Of-Concept with custom domain name (skyboy.app) on AWS
 
-_Development update Feb 16-27, 2022:_
+_Development updates February 2022:_
 * Created Dockerfile and built application Docker image
-* Added uploader utility
+* Added uploader utility (local memory storage only)
 * Added content to initial application view (prior to uploading data)
-* Added basic flight path layer to map
-* Started to add map functionality
-
-_Development update Feb 10, 2022:_
-* Refactored directory structure
-* Added module for transforming data
-* Added module for extracting/calculating metrics from dataset
-
-_Development update Feb 8-9, 2022:_
-* Added more charts
+* Added Mapbox map and basic flight path layer
+* Added Python module for transforming data
+* Added Python module for extracting/calculating metrics from dataset
 * Added flight metrics
-* Added sidebar
-* Added checkboxes to toggle content
-* Added Flight Dynamics chart using plotly
+* Added checkboxes in sidebar to toggle content
+* Added charts using plotly
