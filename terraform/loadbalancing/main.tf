@@ -8,10 +8,11 @@ resource "aws_lb" "skyboy_lb" {
 }
 
 resource "aws_lb_target_group" "skyboy_tg" {
-  name     = "skyboytg"
-  port     = var.tg_port
-  protocol = var.tg_protocol
-  vpc_id   = var.vpc_id
+  name        = "skyboytg"
+  port        = var.tg_port
+  protocol    = var.tg_protocol
+  target_type = "ip"
+  vpc_id      = var.vpc_id
 
   lifecycle {
     create_before_destroy = true

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "skyboy",
+    "image": "IMAGE_PLACEHOLDER",
+    "cpu": 0,
+    "portMappings": [
+      {
+        "containerPort": 8501,
+        "hostPort": 8501,
+        "protocol": "tcp"
+      }
+    ],
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-create-group": "true",
+        "awslogs-group": "/ecs/skyboytask",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]

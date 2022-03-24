@@ -5,6 +5,10 @@ module "vpc" {
   vpc_cidr = "10.14.0.0/16"
 }
 
+module "iam" {
+  source = "./iam"
+}
+
 module "loadbalancing" {
   source                 = "./loadbalancing"
   lb_sg                  = module.vpc.lb_sg
@@ -18,4 +22,18 @@ module "loadbalancing" {
   lb_interval            = 30
   fwd_listener_port      = 80
   fwd_listener_protocol  = "HTTP"
+}
+
+module "containers" {
+  source              = "./containers"
+  capacity_providers  = ["FARGATE", "FARGATE_SPOT"]
+  service_subnets     = module.vpc.lb_subnets
+  service_sg          = module.vpc.service_sg
+  service_launch_type = "FARGATE"
+  task_cpu            = 256
+  task_memory         = 1024
+  container_name      = "skyboy"
+  container_port      = 8501
+  target_group_arn    = module.loadbalancing.lb_target_group_arn
+  task_role_arn       = module.iam.ecs_task_role_arn
 }

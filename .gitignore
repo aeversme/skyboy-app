@@ -6,6 +6,7 @@ test.py
 __pycache__/
 app/.streamlit/config.toml
 terraform/.terraform/
+terraform/containers/task-definitions/*.json
 *.tfstate
 *.tfstate.backup
 *.tfvars

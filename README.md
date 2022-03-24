@@ -15,8 +15,8 @@ _An application for visualizing FPV quadcopter telemetry data logged by OpenTx/E
 * :dart: Sanity checks/error handling
 * :dart: Modify transformations for logs from other receiver/radio combinations
 
-_Development update Mar 18-21, 2022:_
-* VPC resources configured
+_Development update Mar 18-23, 2022:_
+* Terraform tested successfully in dev environment
 * Created modular Terraform code for defining infrastructure
 
 _Development update Mar 13-14, 2022:_
