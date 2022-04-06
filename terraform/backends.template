@@ -5,7 +5,7 @@ terraform {
     organization = "ae-cloud-dev"
 
     workspaces {
-      name = "skyboy"
+      name = "WORKSPACE_NAME"
     }
   }
 }

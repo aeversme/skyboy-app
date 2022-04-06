@@ -1,0 +1,32 @@
+name: Apply Terraform configuration
+
+on:
+  workflow_call:
+    inputs:
+      workspace_name:
+        required: true
+        type: string
+      listeners:
+        required: true
+        type: string
+    secrets:
+      image_uri:
+        required: true
+
+jobs:
+  terraform-apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Create backends.tf file
+        env:
+          WORKSPACE: ${{ inputs.workspace_name }}
+          IMAGE: ${{ secrets.image_uri }}
+          LISTENERS: ${{ inputs.listeners }}
+        run: ./.github/scripts/tf_files.sh
+        shell: bash
+
+
+

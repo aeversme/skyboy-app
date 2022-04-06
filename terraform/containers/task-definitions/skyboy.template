@@ -1,7 +1,7 @@
 [
   {
     "name": "skyboy",
-    "image": "IMAGE_PLACEHOLDER",
+    "image": "IMAGE_URI",
     "cpu": 0,
     "portMappings": [
       {

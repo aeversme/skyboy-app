@@ -1,7 +1,7 @@
 # containers/main.tf
 
 resource "aws_ecs_cluster" "skyboy_cluster" {
-  name = "skyboycluster"
+  name = "skyboy-cluster"
 
   tags = {
     Name = "skyboy_ecs_cluster"
@@ -15,7 +15,7 @@ resource "aws_ecs_cluster_capacity_providers" "skyboy_cluster_providers" {
 }
 
 resource "aws_ecs_service" "skyboy_service" {
-  name            = "skyboyservice"
+  name            = "skyboy-service"
   cluster         = aws_ecs_cluster.skyboy_cluster.id
   task_definition = aws_ecs_task_definition.skyboy_task.arn
   desired_count   = 1
@@ -35,7 +35,7 @@ resource "aws_ecs_service" "skyboy_service" {
 }
 
 resource "aws_ecs_task_definition" "skyboy_task" {
-  family                   = "skyboytask"
+  family                   = "skyboy-task"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.task_cpu

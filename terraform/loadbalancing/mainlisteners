@@ -1,0 +1,26 @@
+resource "aws_lb_listener" "skyboy_forward_listener" {
+  load_balancer_arn = aws_lb.skyboy_lb.arn
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = "arn:aws:acm:us-east-2:822004646756:certificate/25a90395-146d-4835-97da-b69a86f90153"
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.skyboy_tg.arn
+  }
+}
+
+resource "aws_lb_listener" "skyboy_redirect_listener" {
+  load_balancer_arn = aws_lb.skyboy_lb.arn
+  port              = 80
+  protocol          = "HTTP"
+  default_action {
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}

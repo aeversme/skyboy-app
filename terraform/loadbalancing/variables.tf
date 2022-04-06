@@ -35,11 +35,3 @@ variable "lb_timeout" {
 variable "lb_interval" {
   type = number
 }
-
-variable "fwd_listener_port" {
-  type = number
-}
-
-variable "fwd_listener_protocol" {
-  type = string
-}

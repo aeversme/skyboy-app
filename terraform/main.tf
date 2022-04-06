@@ -20,8 +20,6 @@ module "loadbalancing" {
   lb_unhealthy_threshold = 2
   lb_timeout             = 3
   lb_interval            = 30
-  fwd_listener_port      = 80
-  fwd_listener_protocol  = "HTTP"
 }
 
 module "containers" {
