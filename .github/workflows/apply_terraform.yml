@@ -13,6 +13,9 @@ on:
       image_uri:
         required: true
 
+env:
+  TF_IN_AUTOMATION: true
+
 jobs:
   terraform-apply:
     runs-on: ubuntu-latest
@@ -28,5 +31,19 @@ jobs:
         run: ./.github/scripts/tf_files.sh
         shell: bash
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
 
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
