@@ -15,6 +15,9 @@ on:
       tf_token:
         required: true
 
+env:
+  TF_IN_AUTOMATION: true
+
 jobs:
   terraform-apply:
     runs-on: ubuntu-latest
@@ -51,6 +54,6 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan -no-color
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve
