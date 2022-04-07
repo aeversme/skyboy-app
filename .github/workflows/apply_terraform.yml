@@ -1,0 +1,59 @@
+name: Apply Terraform configuration
+
+on:
+  workflow_call:
+    inputs:
+      workspace_name:
+        required: true
+        type: string
+      listeners:
+        required: true
+        type: string
+    secrets:
+      image_uri:
+        required: true
+      tf_token:
+        required: true
+
+env:
+  TF_IN_AUTOMATION: true
+
+jobs:
+  terraform-apply:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./terraform
+        shell: bash
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Run tf_files script
+        env:
+          WORKSPACE: ${{ inputs.workspace_name }}
+          IMAGE: ${{ secrets.image_uri }}
+          LISTENERS: ${{ inputs.listeners }}
+        run: ../.github/scripts/tf_files.sh
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.tf_token }}
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve
