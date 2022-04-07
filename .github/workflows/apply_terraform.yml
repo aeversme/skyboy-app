@@ -12,6 +12,8 @@ on:
     secrets:
       image_uri:
         required: true
+      tf_token:
+        required: true
 
 jobs:
   terraform-apply:
@@ -34,7 +36,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          cli_config_credentials_token: ${{ secrets.TERRAFORM_TOKEN }}
+          cli_config_credentials_token: ${{ secrets.tf_token }}
 
       - name: Terraform Format
         id: fmt

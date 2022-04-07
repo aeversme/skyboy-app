@@ -13,3 +13,4 @@ jobs:
       listeners: 'devlisteners'
     secrets:
       image_uri: ${{ secrets.DEV_IMAGE_URI }}
+      tf_token: ${{ secrets.TERRAFORM_TOKEN }}
