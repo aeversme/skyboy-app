@@ -13,9 +13,6 @@ on:
       image_uri:
         required: true
 
-env:
-  TF_IN_AUTOMATION: true
-
 jobs:
   terraform-apply:
     runs-on: ubuntu-latest
