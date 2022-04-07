@@ -9,6 +9,5 @@ terraform {
 }
 
 provider "aws" {
-  profile = "skyboydev"
   region  = var.aws_region
 }
