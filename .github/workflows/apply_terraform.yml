@@ -34,12 +34,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-
-#      - name: Manually create Terraform credentials file
-#        env:
-#          TOKEN: ${{ secrets.TF_API_TOKEN }}
-#        run: ../.github/scripts/tf_creds.sh
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_TOKEN }}
 
       - name: Terraform Format
         id: fmt
