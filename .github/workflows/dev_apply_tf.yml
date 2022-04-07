@@ -3,9 +3,7 @@ name: Call apply-terrafom from dev branch
 on:
   push:
     branches:
-      - 'dev'
-#    paths:
-#      - 'terraform/**'
+      - dev
 
 jobs:
   apply-tf:
