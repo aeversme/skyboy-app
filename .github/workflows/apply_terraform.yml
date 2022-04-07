@@ -36,6 +36,9 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+      - name: Echo credentials file path
+        run: echo $TF_CLI_CONFIG_FILE
+
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
@@ -48,3 +51,7 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
