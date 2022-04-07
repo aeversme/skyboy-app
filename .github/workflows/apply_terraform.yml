@@ -36,8 +36,10 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Echo credentials file path
-        run: echo $TF_CLI_CONFIG_FILE
+      - name: Manually create Terraform credentials file
+        env:
+          TOKEN: ${{ secrets.TF_API_TOKEN }}
+        run: ../.github/scripts/tf_creds.sh
 
       - name: Terraform Format
         id: fmt
