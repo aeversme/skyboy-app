@@ -3,7 +3,7 @@ name: Call apply-terrafom from dev branch
 on:
   push:
     branches:
-      - dev
+      - main
     paths:
       - 'terraform/**'
 
@@ -11,8 +11,8 @@ jobs:
   apply-tf:
     uses: ./.github/workflows/apply_terraform.yml
     with:
-      workspace_name: 'skyboy-dev'
-      listeners: 'devlisteners'
+      workspace_name: 'skyboy'
+      listeners: 'mainlisteners'
     secrets:
-      image_uri: ${{ secrets.DEV_IMAGE_URI }}
+      image_uri: ${{ secrets.PROD_IMAGE_URI }}
       tf_token: ${{ secrets.TERRAFORM_TOKEN }}
