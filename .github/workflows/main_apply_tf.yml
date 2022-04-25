@@ -1,4 +1,4 @@
-name: Call apply-terrafom from dev branch
+name: Call apply-terrafom from main branch
 
 on:
   push:
