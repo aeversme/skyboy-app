@@ -3,13 +3,14 @@ from plotly.subplots import make_subplots
 
 
 def create_flight_dynamics_chart(data, unit):
+    vert_spd = False
+    if 'VSpd(m/s)' in data.columns:
+        vert_spd = True
     metric = {
         'alt_data': data['Alt(m)'],
         'alt_name': 'Alt (m)',
         'gs_data': data['GSpd(m/s)'],
         'gs_name': 'Ground Spd (m/s)',
-        'vs_data': data['VSpd(m/s)'],
-        'vs_name': 'Vert Spd (m/s)',
         'yaxis1_title': 'Altitude (m)',
         'yaxis2_title': 'Speed (m/s)'
     }
@@ -18,11 +19,15 @@ def create_flight_dynamics_chart(data, unit):
         'alt_name': 'Alt (ft)',
         'gs_data': data['GSpd(mph)'],
         'gs_name': 'Ground Spd (mph)',
-        'vs_data': data['VSpd(mph)'],
-        'vs_name': 'Vert Spd (mph)',
         'yaxis1_title': 'Altitude (ft)',
         'yaxis2_title': 'Speed (mph)'
     }
+    if vert_spd:
+        metric['vs_data'] = data['VSpd(m/s)']
+        metric['vs_name'] = 'Vert Spd (m/s)'
+        imperial['vs_data'] = data['VSpd(mph)']
+        imperial['vs_name'] = 'Vert Spd (mph)'
+
     unit_dict = metric
     if unit == 'imperial':
         unit_dict = imperial
@@ -32,8 +37,9 @@ def create_flight_dynamics_chart(data, unit):
                                          hoverinfo='y'), secondary_y=False)
     flight_dynamics.add_trace(go.Scatter(x=data['Date'], y=unit_dict['gs_data'], name=unit_dict['gs_name'],
                                          hoverinfo='y'), secondary_y=True)
-    flight_dynamics.add_trace(go.Scatter(x=data['Date'], y=unit_dict['vs_data'], name=unit_dict['vs_name'],
-                                         hoverinfo='y'), secondary_y=True)
+    if vert_spd:
+        flight_dynamics.add_trace(go.Scatter(x=data['Date'], y=unit_dict['vs_data'], name=unit_dict['vs_name'],
+                                             hoverinfo='y'), secondary_y=True)
     flight_dynamics.update_layout(title_text='Flight Dynamics',
                                   legend=dict(
                                       orientation='h',
