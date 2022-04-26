@@ -9,6 +9,8 @@ on:
         required: true
       secret_access_key:
         required: true
+      region:
+        required: true
 
 jobs:
   docker-build-push:
@@ -68,6 +70,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.access_key_id }}
           aws-secret-access-key: ${{ secrets.secret_access_key }}
+          aws-region: ${{ secrets.region }}
 
       - name: Force ECS service redeployment
         run: aws ecs update-service --cluster skyboy-cluster --service skyboy-service --force-new-deployment

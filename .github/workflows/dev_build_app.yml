@@ -13,4 +13,5 @@ jobs:
     secrets:
       access_key_id: ${{ secrets.DEV_ACCESS_KEY_ID }}
       secret_access_key: ${{ secrets.DEV_SECRET_ACCESS_KEY }}
+      region: ${{  secrets.AWS_REGION }}
       ecr_registry: ${{ secrets.DEV_ECR_REGISTRY }}

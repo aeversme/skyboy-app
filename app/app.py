@@ -83,7 +83,7 @@ Choose from metric or Imperial units.
 """
 
 update_markdown = """
-_Latest update: Apr 26, 2022_
+_Latest update: Apr 25, 2022_
 """
 
 metrics_image = Image.open('src/images/metrics.jpg')
