@@ -82,6 +82,10 @@ initial_markdown = """
 Choose from metric or Imperial units.
 """
 
+update_markdown = """
+_Latest update: Apr 26, 2022_
+"""
+
 metrics_image = Image.open('src/images/metrics.jpg')
 map_image = Image.open('src/images/map.jpg')
 chart_image = Image.open('src/images/chart.jpg')
@@ -121,3 +125,6 @@ if uploaded_file is not None:
         spd_label = 'GSpd(mph)'
 
     display_flight(flight_data, user_unit, alt_label, spd_label)
+
+
+st.sidebar.write(update_markdown)
