@@ -9,6 +9,8 @@ on:
         required: true
       secret_access_key:
         required: true
+      region:
+        required: true
 
 jobs:
   docker-build-push:
@@ -58,3 +60,17 @@ jobs:
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+  redeploy-ecs-service:
+    runs-on: ubuntu-latest
+    needs: docker-build-push
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-action/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.access_key_id }}
+          aws-secret-access-key: ${{ secrets.secret_access_key }}
+          aws-region: ${{ secrets.region }}
+
+      - name: Force ECS service redeployment
+        run: aws ecs update-service --cluster skyboy-cluster --service skyboy-service --force-new-deployment

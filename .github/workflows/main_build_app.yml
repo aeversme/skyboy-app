@@ -13,4 +13,5 @@ jobs:
     secrets:
       access_key_id: ${{ secrets.PROD_ACCESS_KEY_ID }}
       secret_access_key: ${{ secrets.PROD_SECRET_ACCESS_KEY }}
+      region: ${{  secrets.AWS_REGION }}
       ecr_registry: ${{ secrets.PROD_ECR_REGISTRY }}

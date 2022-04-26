@@ -82,9 +82,13 @@ initial_markdown = """
 Choose from metric or Imperial units.
 """
 
-metrics_image = Image.open('src/images/metrics.jpg')
+update_markdown = """
+_Latest update: Apr 26, 2022_
+"""
+
+metrics_image = Image.open('src/images/metrics.png')
 map_image = Image.open('src/images/map.jpg')
-chart_image = Image.open('src/images/chart.jpg')
+chart_image = Image.open('src/images/chart.png')
 
 st.set_page_config(page_title='Skyboy Quad Telemetry App', layout='wide')
 
@@ -121,3 +125,6 @@ if uploaded_file is not None:
         spd_label = 'GSpd(mph)'
 
     display_flight(flight_data, user_unit, alt_label, spd_label)
+
+
+st.sidebar.write(update_markdown)
