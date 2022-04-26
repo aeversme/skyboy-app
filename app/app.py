@@ -83,12 +83,12 @@ Choose from metric or Imperial units.
 """
 
 update_markdown = """
-_Latest update: Apr 25, 2022_
+_Latest update: Apr 26, 2022_
 """
 
-metrics_image = Image.open('src/images/metrics.jpg')
+metrics_image = Image.open('src/images/metrics.png')
 map_image = Image.open('src/images/map.jpg')
-chart_image = Image.open('src/images/chart.jpg')
+chart_image = Image.open('src/images/chart.png')
 
 st.set_page_config(page_title='Skyboy Quad Telemetry App', layout='wide')
 
