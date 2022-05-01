@@ -5,6 +5,7 @@ from src.modules import data_conversion as dc
 from src.modules import charts as ch
 from src.modules import metrics as mt
 from src.modules import maps as mp
+from src.modules import demo
 
 
 @st.cache
@@ -83,8 +84,12 @@ Choose from metric or Imperial units.
 """
 
 update_markdown = """
-_Latest update: Apr 26, 2022_
+_Latest update: Apr 29, 2022_
 """
+
+demo.get_demo_telemetry()
+if 'demomode' not in st.session_state:
+    st.session_state.demomode = False
 
 metrics_image = Image.open('src/images/metrics.png')
 map_image = Image.open('src/images/map.jpg')
@@ -96,8 +101,12 @@ st.title('Skyboy')
 st.markdown(subtitle_markdown)
 
 st.sidebar.title('Skyboy Utilities')
+demo_button = st.sidebar.button("Demo Skyboy")
+if demo_button:
+    st.session_state.demomode = True
 uploaded_file = st.sidebar.file_uploader('Upload a telemetry log:', type=['csv'])
-if not uploaded_file:
+
+if not uploaded_file and not st.session_state.demomode:
     col1, col2 = st.columns(2)
     col1.write(initial_markdown)
     col1.subheader("Upload a telemetry log in the sidebar to get started!")
@@ -106,10 +115,17 @@ if not uploaded_file:
     col2.image(chart_image)
     st.sidebar.caption("NB: Uploaded files are stored in memory and will not persist after the app is closed. Each "
                        "instance of the app is independent of every other instance.")
-if uploaded_file is not None:
+
+if st.session_state.demomode or (uploaded_file is not None):
     st.sidebar.markdown('_Data processing status:_')
     data_load_state = st.sidebar.text('Loading data...')
-    flight_data = load_data(uploaded_file)
+
+    if uploaded_file:
+        flight_data = load_data(uploaded_file)
+        st.session_state.demomode = False
+    else:
+        flight_data = load_data('demo-telemetry.csv')
+
     data_load_state.text('Loading data and caching... done!')
 
     if st.sidebar.checkbox('Show raw flight data'):
