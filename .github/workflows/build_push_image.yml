@@ -30,7 +30,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.MAPBOX_API_TOKEN }}
           BUCKET_NAME: ${{ inputs.bucket_name }}
-        run: ../.github/scripts/app_files.sh
+        run: .github/scripts/app_files.sh
 
       - name: Set up Docker Buildx
         id: buildx
