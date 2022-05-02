@@ -8,6 +8,7 @@ _An application for visualizing FPV quadcopter telemetry data logged by OpenTx/E
 
 * :heavy_check_mark: [Deploy](https://skyboy.app) proof-of-concept with load-balancing and a domain
 * :heavy_check_mark: Configure and implement Terraform for AWS infrastructure
+* :heavy_check_mark: Add demo mode
 * :construction: Modify transformations for logs from other receiver/radio/flight controller combinations
 * :dart: Add authentication and personal S3 buckets or directories
 * :dart: Add S3 upload functionality
@@ -17,7 +18,8 @@ _An application for visualizing FPV quadcopter telemetry data logged by OpenTx/E
 * :dart: Testing
 
 _Development updates April 2022:_
-* Deployed infrastructure as code with branch-dependent Actions workflow
+* Deployed infrastructure as code with branch-dependent Actions workflow* 
+* Added ability for user to demo the app using a sample telemetry log
 
 _Development update March 2022:_
 * Created modular Terraform code for defining infrastructure
