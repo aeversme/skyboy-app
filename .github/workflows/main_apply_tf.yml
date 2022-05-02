@@ -16,5 +16,5 @@ jobs:
     secrets:
       image_uri: ${{ secrets.PROD_IMAGE_URI }}
       tf_token: ${{ secrets.TERRAFORM_TOKEN }}
-      user_id_arn: ${{ secrets.USER_ID_ARN }}
-      user_key_arn: ${{ secrets.USER_KEY_ARN }}
+      user_id_arn: ${{ secrets.PROD_USER_ID_ARN }}
+      user_key_arn: ${{ secrets.PROD_USER_KEY_ARN }}
