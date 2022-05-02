@@ -2,6 +2,10 @@ name: Build and push Docker image
 
 on:
   workflow_call:
+    inputs:
+      bucket_name:
+        required: true
+        type: string
     secrets:
       access_key_id:
         required: true
@@ -22,10 +26,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Create config.toml file
+      - name: Run app_files script
         env:
           TOKEN: ${{ secrets.MAPBOX_API_TOKEN }}
-        run: sed "s/TOKEN_PLACEHOLDER/$TOKEN/g" ./app/.streamlit/config.template > ./app/.streamlit/config.toml
+          BUCKET_NAME: ${{ inputs.bucket_name }}
+        run: ../.github/scripts/app_files.sh
 
       - name: Set up Docker Buildx
         id: buildx

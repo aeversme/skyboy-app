@@ -84,7 +84,7 @@ Choose from metric or Imperial units.
 """
 
 update_markdown = """
-_Latest update: Apr 29, 2022_
+_Latest update: Apr 30, 2022_
 """
 
 demo.get_demo_telemetry()
