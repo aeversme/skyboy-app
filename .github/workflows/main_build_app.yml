@@ -10,6 +10,8 @@ on:
 jobs:
   build-app:
     uses: ./.github/workflows/build_push_image.yml
+    with:
+      bucket_name: 'skyboy-prod-demo-telemetry'
     secrets:
       access_key_id: ${{ secrets.PROD_ACCESS_KEY_ID }}
       secret_access_key: ${{ secrets.PROD_SECRET_ACCESS_KEY }}

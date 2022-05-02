@@ -19,6 +19,16 @@
         "awslogs-region": "us-east-2",
         "awslogs-stream-prefix": "ecs"
       }
-    }
+    },
+    "secrets": [
+      {
+        "name": "S3_USER_ID",
+        "valueFrom": "USER_ID_ARN"
+      },
+      {
+        "name": "S3_USER_KEY",
+        "valueFrom": "USER_KEY_ARN"
+      }
+    ]
   }
 ]
