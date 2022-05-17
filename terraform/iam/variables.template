@@ -1,0 +1,5 @@
+# iam/variables.tf
+
+variable "datadog_aws_integration_external_id" {
+  default = "DD_EXTERNAL_ID"
+}
