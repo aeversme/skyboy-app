@@ -18,3 +18,5 @@ jobs:
       tf_token: ${{ secrets.TERRAFORM_TOKEN }}
       user_id_arn: ${{ secrets.DEV_USER_ID_ARN }}
       user_key_arn: ${{ secrets.DEV_USER_KEY_ARN }}
+      dd_id: ${{ secrets.DEV_DD_ID }}
+      dd_api_key: ${{ secrets.DD_API_KEY }}
