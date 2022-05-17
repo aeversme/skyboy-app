@@ -18,6 +18,10 @@ on:
         required: true
       user_key_arn:
         required: true
+      dd_id:
+        required: true
+      dd_api_key:
+        required: true
 
 env:
   TF_IN_AUTOMATION: true
@@ -40,6 +44,8 @@ jobs:
           LISTENERS: ${{ inputs.listeners }}
           USER_ID_ARN: ${{ secrets.user_id_arn }}
           USER_KEY_ARN: ${{ secrets.user_key_arn }}
+          DD_ID: ${{ secrets.dd_id }}
+          DD_API_KEY: ${{ secrets.dd_api_key }}
         run: ../.github/scripts/tf_files.sh
 
       - name: Setup Terraform

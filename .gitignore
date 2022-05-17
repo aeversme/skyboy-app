@@ -9,6 +9,8 @@ app/.streamlit/config.toml
 app/src/modules/demo.py
 terraform/.terraform/
 terraform/containers/task-definitions/*.json
+terraform/iam/variables.tf
+terraform/loadbalancing/main.tf
 *.tfstate
 *.tfstate.backup
 *.tfvars

@@ -2,7 +2,7 @@
   {
     "name": "skyboy",
     "image": "IMAGE_URI",
-    "cpu": 0,
+    "cpu": 10,
     "portMappings": [
       {
         "containerPort": 8501,
@@ -28,6 +28,22 @@
       {
         "name": "S3_USER_KEY",
         "valueFrom": "USER_KEY_ARN"
+      }
+    ]
+  },
+  {
+    "name": "datadog-agent",
+    "image": "public.ecr.aws/datadog/agent:latest",
+    "cpu": 10,
+    "essential": true,
+    "environment": [
+      {
+        "name": "DD_API_KEY",
+        "value": "DATADOG_KEY"
+      },
+      {
+        "name": "ECS_FARGATE",
+        "value": "true"
       }
     ]
   }
