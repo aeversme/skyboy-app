@@ -20,6 +20,14 @@
         "awslogs-stream-prefix": "ecs"
       }
     },
+    "healthCheck": {
+      "retries": 3,
+      "command": [
+        "CMD-SHELL", "curl -f http://127.0.0.1:8501/ || exit 1"
+      ],
+      "timeout": 5,
+      "interval": 30
+    },
     "secrets": [
       {
         "name": "S3_USER_ID",
@@ -35,7 +43,7 @@
     "name": "datadog-agent",
     "image": "public.ecr.aws/datadog/agent:latest",
     "cpu": 10,
-    "essential": true,
+    "essential": false,
     "environment": [
       {
         "name": "DD_API_KEY",
