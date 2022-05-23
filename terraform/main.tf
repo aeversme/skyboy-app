@@ -35,3 +35,9 @@ module "containers" {
   target_group_arn    = module.loadbalancing.lb_target_group_arn
   task_role_arn       = module.iam.ecs_task_role_arn
 }
+
+module "autoscaling" {
+  source       = "./autoscaling"
+  cluster_name = module.containers.cluster_name
+  service_name = module.containers.service_name
+}

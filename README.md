@@ -19,11 +19,12 @@ _An application for visualizing FPV quadcopter telemetry data logged by OpenTx/E
 * :dart: Testing
 
 _Development updates May 2022:_
+* Configured auto-scaling policies and container health checks
 * Deployed Datadog Agent container to monitor service metrics
 * Added a Demo button to allow users to preview the application
 
 _Development updates April 2022:_
-* Deployed infrastructure as code with branch-dependent Actions workflow* 
+* Deployed infrastructure as code with branch-dependent Actions workflow
 * Added ability for user to demo the app using a sample telemetry log
 
 _Development update March 2022:_

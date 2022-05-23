@@ -31,7 +31,7 @@ def display_flight(data, unit, alt, spd):
     col4.metric('Capacity Used', mt.get_capacity_used(data['Capa(mAh)']))
     col5.metric('Transmitter Power', mt.get_tx_power(data['TPWR(mW)']))
 
-    st.subheader('Flight Map')
+    st.subheader('3D Flight Map')
     st.markdown('_Drag to pan. Hold `SHIFT` and drag to rotate. Scroll to zoom._')
     flight_map = mp.create_flight_map(data)
     st.pydeck_chart(flight_map)
@@ -84,10 +84,9 @@ Choose from metric or Imperial units.
 """
 
 update_markdown = """
-_Latest update: Apr 30, 2022_
+_Latest update: May 22, 2022_
 """
 
-demo.get_demo_telemetry()
 if 'demomode' not in st.session_state:
     st.session_state.demomode = False
 
@@ -103,6 +102,7 @@ st.markdown(subtitle_markdown)
 st.sidebar.title('Skyboy Utilities')
 demo_button = st.sidebar.button("Demo Skyboy")
 if demo_button:
+    demo.get_demo_telemetry()
     st.session_state.demomode = True
 uploaded_file = st.sidebar.file_uploader('Upload a telemetry log:', type=['csv'])
 
