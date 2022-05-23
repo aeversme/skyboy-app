@@ -14,3 +14,4 @@ terraform/loadbalancing/main.tf
 *.tfstate
 *.tfstate.backup
 *.tfvars
+.env
