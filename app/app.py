@@ -84,7 +84,7 @@ Choose from metric or Imperial units.
 """
 
 update_markdown = """
-_Latest update: Apr 30, 2022_
+_Latest update: May 22, 2022_
 """
 
 if 'demomode' not in st.session_state:
