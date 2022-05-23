@@ -32,6 +32,10 @@ resource "aws_ecs_service" "skyboy_service" {
     container_name   = var.container_name
     container_port   = var.container_port
   }
+
+  lifecycle {
+    ignore_changes = [desired_count]
+  }
 }
 
 resource "aws_ecs_task_definition" "skyboy_task" {
