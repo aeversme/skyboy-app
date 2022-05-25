@@ -37,7 +37,15 @@ module "containers" {
 }
 
 module "autoscaling" {
-  source       = "./autoscaling"
-  cluster_name = module.containers.cluster_name
-  service_name = module.containers.service_name
+  source             = "./autoscaling"
+  cluster_name       = module.containers.cluster_name
+  service_name       = module.containers.service_name
+  scale_dimension    = "ecs:service:DesiredCount"
+  namespace          = "ecs"
+  max_capacity       = 4
+  min_capacity       = 1
+  scale_in_cooldown  = 60
+  scale_out_cooldown = 60
+  cpu_target         = 80
+  mem_target         = 80
 }
