@@ -35,7 +35,3 @@ variable "container_name" {
 variable "container_port" {
   type = number
 }
-
-variable "target_group_arn" {
-  type = string
-}

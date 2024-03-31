@@ -38,21 +38,5 @@
         "valueFrom": "USER_KEY_ARN"
       }
     ]
-  },
-  {
-    "name": "datadog-agent",
-    "image": "public.ecr.aws/datadog/agent:latest",
-    "cpu": 10,
-    "essential": false,
-    "environment": [
-      {
-        "name": "DD_API_KEY",
-        "value": "DATADOG_KEY"
-      },
-      {
-        "name": "ECS_FARGATE",
-        "value": "true"
-      }
-    ]
   }
 ]

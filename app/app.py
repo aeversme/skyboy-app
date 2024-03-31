@@ -7,6 +7,9 @@ from src.modules import metrics as mt
 from src.modules import maps as mp
 from src.modules import demo
 
+# Set the server address to listen on all network interfaces
+st.set_option('server.address', '0.0.0.0')
+
 
 @st.cache
 def load_data(file):
